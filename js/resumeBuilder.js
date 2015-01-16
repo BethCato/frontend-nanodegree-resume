@@ -24,7 +24,7 @@ var bio = {
 	"welcomeMessage" : "The best thing about a boolean is even if you are wrong, you are only off by a bit. -(Anonymous) ",
 	// add the skills array from mySkills object above to this section.  This will make it easier to update as I increase my skills.
 	"skills" : mySkills,
-	"biopic" : "images/bcato2.jpg"	
+	"biopic" : "images/bcato.jpg"	
 	}
 	//add the display function to the bio object
 	bio.display = function () {
