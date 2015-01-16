@@ -1,0 +1,5 @@
+Resources:
+-Piazza posts https://piazza.com/class/i23vpy8h7l27la?cid=467
+-Mozilla Developer Network - https://developer.mozilla.org
+-Google Developers - https://developers.google.com/maps/
+-Udacity - Javascript Basics Course #ud804
