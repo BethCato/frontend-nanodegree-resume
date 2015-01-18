@@ -10,7 +10,7 @@ var mySkills = [
 	"Team Manager",
 	"Business Process Development",
 	"Ability to create order from chaos"
-	]
+]
 var bio = {
 	"name": "Beth Cato",
 	"role"	: "Epic Programmer",
@@ -20,50 +20,50 @@ var bio = {
 		"github" : "https://github.com/BethCato",
 		"twitter" : "@Blue_Bird_2001",
 		"location" : "Ocala, FL"
-		},
+	},
 	"welcomeMessage" : "The best thing about a boolean is even if you are wrong, you are only off by a bit. -(Anonymous) ",
 	// add the skills array from mySkills object above to this section.  This will make it easier to update as I increase my skills.
 	"skills" : mySkills,
-	"biopic" : "images/bcato.jpg"	
-	}
-	//add the display function to the bio object
-	bio.display = function () {
-		//Add the data to the preformatted HTML strings found in helper.js
-		var formattedName = HTMLheaderName.replace("%data%",bio.name);
-		var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-		var formattedWelcome = HTMLWelcomeMsg.replace("%data%",bio.welcomeMessage);
-		//Prepending role and name to the header section. 
-		$("#header").prepend(formattedRole);
-		$("#header").prepend(formattedName);
-		//Append the welcome message so it appears after name and role.
-		$("#header").append(formattedWelcome);
+	"biopic" : "images/bcato.jpg"
+}
+//add the display function to the bio object
+bio.display = function () {
+	//Add the data to the preformatted HTML strings found in helper.js
+	var formattedName = HTMLheaderName.replace("%data%",bio.name);
+	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+	var formattedWelcome = HTMLWelcomeMsg.replace("%data%",bio.welcomeMessage);
+	//Prepending role and name to the header section. 
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
+	//Append the welcome message so it appears after name and role.
+	$("#header").append(formattedWelcome);
 
-		//format the contact info:
-		var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
-		var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-		var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
-		var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
-		var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-		// put the contact info together into a single variable to use for both contact sections:
-		var contactInfo = formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation;
-		//set the top contacts
-		$("#topContacts").append(contactInfo);
-		//set the footer contacts
-		$("#footerContacts").append(contactInfo);
+	//format the contact info:
+	var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+	var formattedGitHub = HTMLgithub.replace("%data%",bio.contacts.github);
+	var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+	var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+	// put the contact info together into a single variable to use for both contact sections:
+	var contactInfo = formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation;
+	//set the top contacts
+	$("#topContacts").append(contactInfo);
+	//set the footer contacts
+	$("#footerContacts").append(contactInfo);
 
-		//add my picture to the header and then skills, if any are in the object.
-		var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
-		$("#header").append(formattedPic);
+	//add my picture to the header and then skills, if any are in the object.
+	var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
+	$("#header").append(formattedPic);
 
-		// add the skills to the header, but only if some are listed in this object.  Include header after the if statement to avoid putting the header and no skills.  
-		if (bio.skills.length>0) {
-			$("#header").append(HTMLskillsStart);	
-			for (skill in bio.skills) {
-				formattedSkill = HTMLskills.replace("%data%",bio.skills[skill]);
-				$("#skills").append(formattedSkill);
-			}
+	// add the skills to the header, but only if some are listed in this object.  Include header after the if statement to avoid putting the header and no skills.  
+	if (bio.skills.length>0) {
+		$("#header").append(HTMLskillsStart);
+		for (skill in bio.skills) {
+			formattedSkill = HTMLskills.replace("%data%",bio.skills[skill]);
+			$("#skills").append(formattedSkill);
 		}
 	}
+}
 var work = {
 	"jobs" : [
 		{
@@ -86,28 +86,28 @@ var work = {
 			"location" : "Charlotte, NC",
 			"description" : "Start up and maintain IT operations for a new mobile company.  Head up the field IT operations including desktop, laptop and server deployments.  Work with network operations to put field offices in place."
 		}
-	  ]
-   	}
-   	//add the diplay function to the work object
-   	work.display = function() {
-   		//for every job, format the details with the appropriate HTML string from helper.js.
-		for (job in work.jobs) {
-			$("#workExperience").append(HTMLworkStart);
-			var formattedEmpl = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
-			var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
-			var formattedEmplTitle = formattedEmpl + formattedTitle
-			//append the string to the last entry of the work-entry class.  Use the last selector to select the last element.
-			$(".work-entry:last").append(formattedEmplTitle);
+	]
+}
+//add the diplay function to the work object
+work.display = function() {
+	//for every job, format the details with the appropriate HTML string from helper.js.
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formattedEmpl = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+		var formattedEmplTitle = formattedEmpl + formattedTitle;
+		//append the string to the last entry of the work-entry class.  Use the last selector to select the last element.
+		$(".work-entry:last").append(formattedEmplTitle);
 
-			//now, add the location, date,  and description for each job to the work-entry class. 
-			var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
-			$(".work-entry:last").append(formattedLocation);
-			var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
-			$(".work-entry:last").append(formattedDates);
-			var formattedDesc = HTMLworkDescription.replace("%data%",work.jobs[job].description);
-			$(".work-entry:last").append(formattedDesc);
-		}
+		//now, add the location, date,  and description for each job to the work-entry class. 
+		var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+		$(".work-entry:last").append(formattedLocation);
+		var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+		$(".work-entry:last").append(formattedDates);
+		var formattedDesc = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+		$(".work-entry:last").append(formattedDesc);
 	}
+}
 var projects = {
 	"projects" : [
 		{
@@ -122,28 +122,28 @@ var projects = {
 			"description" : "One department was having problems with software updates periodcally and needed the opportunity to test the pushes indepth prior to systematic deployment. I worked with individuals from multiple departments to create an automated solution giving the department full control of the deployments to their environment.  Everyone is happy.",
 			"images" : ["images/processFlow.png", "images/happyPeople.jpg"]
 		}
-	  ]
-	}
-	// encapsulate the display function to the projects object
-	projects.display = function() {
-		// use for loop so nothing is added to the project-entry class if there are no projects in the array.
-		for (project in projects.projects) {
-			//create a new project entry for each project
-			$("#projects").append(HTMLprojectStart);
-			var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
-			$(".project-entry:last").append(formattedTitle);
-			var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
-			$(".project-entry:last").append(formattedDates);
-			var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
-			$(".project-entry:last").append(formattedDescription);
-			//If there are images, add them one at a time to the projects-entry class.  If there are none, the for loop contents will not execute.
-			for (image in projects.projects[project].images) {
-				var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
-				$(".project-entry:last").append(formattedImage);
-			}
-			
+	]
+}
+// encapsulate the display function to the projects object
+projects.display = function() {
+	// use for loop so nothing is added to the project-entry class if there are no projects in the array.
+	for (project in projects.projects) {
+		//create a new project entry for each project
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+		$(".project-entry:last").append(formattedTitle);
+		var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
+		$(".project-entry:last").append(formattedDates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
+		$(".project-entry:last").append(formattedDescription);
+		//If there are images, add them one at a time to the projects-entry class.  If there are none, the for loop contents will not execute.
+		for (image in projects.projects[project].images) {
+			var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
+			$(".project-entry:last").append(formattedImage);
 		}
+			
 	}
+}
 var education = {
 	"schools" : [
 		{
@@ -162,7 +162,7 @@ var education = {
 			"location" : "Columbia, SC",
 			"url" : "http://www.sc.edu"
 		}
-	  ],
+	],
 	"onlineCourses" : [
 		{
 			"title" : "JavaScript Syntax",
@@ -188,56 +188,56 @@ var education = {
 			"date" : 2015,
 			"url" : "http://www.udacity.com/course/ud245"
 		}
-	  ]
+	]
+}
+//encapsulate the function to display the education information inside the education object.
+education.display = function () {
+	for(school in education.schools) {
+		//create a new eduction entry for each school
+		$("#education").append(HTMLschoolStart);
+
+		//Add the school name and degree to the same line:
+		var formattedName = HTMLschoolName .replace("%data%",education.schools[school].name);
+		var formattedDegree = HTMLschoolDegree .replace("%data%",education.schools[school].degree);
+		var formattedEduLine = formattedName + formattedDegree;
+		$(".education-entry:last").append(formattedEduLine);
+
+		//add dates and locations to the education-entry class
+		var formattedDates = HTMLschoolDates.replace("%data%",education.schools[school].dates);
+		$(".education-entry:last").append(formattedDates);
+
+		var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location);
+		$(".education-entry:last").append(formattedLocation);
+
+		//if there is more than one major, add them one at a time
+		for(major in education.schools[school].majors) {
+			var formattedMajor = HTMLschoolMajor.replace("%data%",education.schools[school].majors[major]);
+			$(".education-entry:last").append(formattedMajor);
+		}		
 	}
-	//encapsulate the function to display the education information inside the education object.
-	education.display = function () {
-		for(school in education.schools) {
-			//create a new eduction entry for each school
+	if (education.onlineCourses.length>0) {
+		//Add the header for online classes if the online course list isn't empty.
+		$("#education").append(HTMLonlineClasses);
+
+		//create a new eduction entry for each online class
+		for (course in education.onlineCourses) {
 			$("#education").append(HTMLschoolStart);
+			var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
+			var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
+			var formattedTitleSchool = formattedTitle + formattedSchool;
+			$(".education-entry:last").append(formattedTitleSchool);
 
-			//Add the school name and degree to the same line:
-			var formattedName = HTMLschoolName .replace("%data%",education.schools[school].name);
-			var formattedDegree = HTMLschoolDegree .replace("%data%",education.schools[school].degree);
-			var formattedEduLine = formattedName + formattedDegree;
-			$(".education-entry:last").append(formattedEduLine);
+			var formattedDate = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date);
+			$(".education-entry:last").append(formattedDate);
 
-			//add dates and locations to the education-entry class
-			var formattedDates = HTMLschoolDates.replace("%data%",education.schools[school].dates);
-			$(".education-entry:last").append(formattedDates);
-
-			var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location);
-			$(".education-entry:last").append(formattedLocation);
-
-			//if there is more than one major, add them one at a time
-			for(major in education.schools[school].majors) {
-				var formattedMajor = HTMLschoolMajor.replace("%data%",education.schools[school].majors[major]);
-				$(".education-entry:last").append(formattedMajor);
-			}		
-		}
-		if (education.onlineCourses.length>0) {
-			//Add the header for online classes if the online course list isn't empty.
-			$("#education").append(HTMLonlineClasses);			
-
-			//create a new eduction entry for each online class
-			for (course in education.onlineCourses) {
-				$("#education").append(HTMLschoolStart);
-				var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
-				var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
-				var formattedTitleSchool = formattedTitle + formattedSchool
-				$(".education-entry:last").append(formattedTitleSchool);
-
-				var formattedDate = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date);			
-				$(".education-entry:last").append(formattedDate);
-
-				var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);				
-				$(".education-entry:last").append(formattedUrl);	
-			}
+			var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
+			$(".education-entry:last").append(formattedUrl);
 		}
 	}
+}
 
 
-// call the encapsulated functions for each section.
+// call the encapsulated display functions for each section of objects to put on the resume.
 bio.display();
 work.display();
 projects.display();
