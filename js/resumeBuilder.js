@@ -26,7 +26,7 @@ var bio = {
 	"skills" : mySkills,
 	"biopic" : "images/bcato.jpg"
 }
-//add the display function to the bio object
+// encapsulate the display function into the bio object
 bio.display = function () {
 	//Add the data to the preformatted HTML strings found in helper.js
 	var formattedName = HTMLheaderName.replace("%data%",bio.name);
@@ -68,19 +68,22 @@ var work = {
 	"jobs" : [
 		{
 			"employer" : "AT&T",
+			"url" : "http://www.att.com",
 			"title" : "Sr. Systems Architect",
 			"dates" : "2007 - present",
 			"location" : "Ocala, FL",
 			"description" : "Develop business processes across multiple departments to address specific needs. Maintain security across desktops, laptops and company owned mobile devices by ensureing all software on the systems/devices are licensed and updated based on security patch releases by software vendors."
 		},
 		{
-			"employer" : "Cingular",
+			"employer" : "AT&T formerly Cingular",
+			"url" : "http://www.att.com",
 			"title" : "IT Manager",
 			"dates" : "2001 - 2007",
 			"location" : "Ocala, FL",
 			"description" : "Manage the telco and computer teams across multiple call centers and retail locations in the Southeastern region."
 		},
-		{	"employer" : "BellSouth Mobility DCS",
+		{	"employer" : "AT&T formerly BellSouth Mobility DCS",
+			"url" : "http://www.att.com",
 			"title" : "Systems Administrator",
 			"dates" : "1995 - 2001",
 			"location" : "Charlotte, NC",
@@ -88,12 +91,13 @@ var work = {
 		}
 	]
 }
-//add the diplay function to the work object
+// encapsulate the diplay function into the work object
 work.display = function() {
 	//for every job, format the details with the appropriate HTML string from helper.js.
 	for (job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmpl = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+		formattedEmpl = formattedEmpl.replace("#", work.jobs[job].url);
 		var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
 		var formattedEmplTitle = formattedEmpl + formattedTitle;
 		//append the string to the last entry of the work-entry class.  Use the last selector to select the last element.
@@ -114,23 +118,27 @@ var projects = {
 			"title": "Create-Your-Own-Adventure",
 			"dates" : "January 2015",
 			"description" : "Added to the story - check it out! https://github.com/udacity/create-your-own-adventure",
-			"images" :  ["images/map.jpg", "images/minecraft.png"]
+			"images" :  ["images/map.jpg", "images/minecraft.png"],
+			"url" : "https://github.com/udacity/create-your-own-adventure"
+
 		},
 		{
 			"title" : "Created a new process flow",
 			"dates" : "2014",
 			"description" : "One department was having problems with software updates periodcally and needed the opportunity to test the pushes indepth prior to systematic deployment. I worked with individuals from multiple departments to create an automated solution giving the department full control of the deployments to their environment.  Everyone is happy.",
-			"images" : ["images/processFlow.png", "images/happyPeople.jpg"]
+			"images" : ["images/processFlow.png", "images/happyPeople.jpg"],
+			"url" : ""
 		}
 	]
 }
-// encapsulate the display function to the projects object
+// encapsulate the display function into the projects object
 projects.display = function() {
 	// use for loop so nothing is added to the project-entry class if there are no projects in the array.
 	for (project in projects.projects) {
 		//create a new project entry for each project
 		$("#projects").append(HTMLprojectStart);
 		var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+		formattedTitle = formattedTitle.replace("#", projects.projects[project].url);
 		$(".project-entry:last").append(formattedTitle);
 		var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates);
 		$(".project-entry:last").append(formattedDates);
@@ -198,6 +206,7 @@ education.display = function () {
 
 		//Add the school name and degree to the same line:
 		var formattedName = HTMLschoolName .replace("%data%",education.schools[school].name);
+		formattedName = formattedName.replace("#", education.schools[school].url);
 		var formattedDegree = HTMLschoolDegree .replace("%data%",education.schools[school].degree);
 		var formattedEduLine = formattedName + formattedDegree;
 		$(".education-entry:last").append(formattedEduLine);
@@ -223,6 +232,7 @@ education.display = function () {
 		for (course in education.onlineCourses) {
 			$("#education").append(HTMLschoolStart);
 			var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
+			formattedTitle = formattedTitle.replace("#", education.onlineCourses[course].url);
 			var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
 			var formattedTitleSchool = formattedTitle + formattedSchool;
 			$(".education-entry:last").append(formattedTitleSchool);
@@ -231,11 +241,11 @@ education.display = function () {
 			$(".education-entry:last").append(formattedDate);
 
 			var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
+			formattedUrl = formattedUrl.replace("#", education.onlineCourses[course].url);
 			$(".education-entry:last").append(formattedUrl);
 		}
 	}
 }
-
 
 // call the encapsulated display functions for each section of objects to put on the resume.
 bio.display();
