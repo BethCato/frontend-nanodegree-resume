@@ -6,7 +6,7 @@
 
 var mySkills = [
 	"VBA Programming",
-	"Acute Organizational Skills",
+	"Exceptional Organizational Skills",
 	"Team Manager",
 	"Business Process Development",
 	"Ability to create order from chaos"
